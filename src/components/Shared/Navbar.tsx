@@ -1,38 +1,34 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const [showNavbar, setShowNavbar] = useState(true);
-  const location = useLocation();
+    const [isNavbarVisible, setNavbarVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const handleScroll = () => {
-    const heroSection = document.getElementById("hero");
-    if (heroSection) {
-      const heroHeight = heroSection.offsetHeight;
-      if (window.scrollY > heroHeight) {
-        setShowNavbar(true); // Show the navbar after scrolling past the hero
-      } else {
-        setShowNavbar(false); // Hide it when inside the hero section
-      }
+    const scrollY = window.scrollY;
+
+    if (scrollY > lastScrollY) {
+      setNavbarVisible(false); // Hide navbar when scrolling down
+    } else {
+      setNavbarVisible(true); // Show navbar when scrolling up
     }
+
+    setLastScrollY(scrollY);
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
-
-  // Show Navbar always on different routes
-  useEffect(() => {
-    if (location.pathname !== "/") {
-      setShowNavbar(true);
-    }
-  }, [location.pathname]);
-
+  }, [lastScrollY]);
   return (
-    <nav className={`fixed w-full z-10 ${showNavbar ? "block" : "hidden"}`}>
+    <div
+      className={`navbar fixed z-10 bg-[#04190a] bg-opacity-35 text-white transition-transform duration-300 ${
+        isNavbarVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="navbar fixed z-10 bg-[#04190a] bg-opacity-35 text-white mx-auto max-w-screen">
         <div className="navbar-start">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -85,7 +81,7 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
-    </nav>
+    </div>
   );
 };
 

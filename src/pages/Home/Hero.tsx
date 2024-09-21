@@ -1,22 +1,87 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
+import slide1 from "../../assets/hero/Hero1.jpg";
+import slide2 from "../../assets/hero/hero2.jpg";
+import slide3 from "../../assets/hero/hero3.jpg";
 
 const Hero = () => {
   return (
-    <section
-      id="hero"
-      className="h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center text-center text-white"
-      style={{
-        backgroundImage: 'url("https://example.com/your-hero-image.jpg")', // Replace with your image URL
-      }}
-    >
-      <div className="bg-black bg-opacity-50 p-8 rounded-lg">
-        <h1 className="text-5xl font-bold">Welcome to Sports Facility Booking</h1>
-        <p className="text-xl mt-4">Book your favorite sports facility with ease!</p>
-        <button className="mt-6 px-6 py-3 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded">
-          Get Started
-        </button>
-      </div>
-    </section>
+    <>
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+          <div className="hero relative container">
+            <img src={slide1} alt="Slide 1" />
+            <div className="hero-overlay bg-[#000000] bg-opacity-60"></div>
+            <div className="space-y-6 w-3/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center py-10">
+              <h1 className="text-xl md:text-4xl lg:text-7xl font-bold uppercase">
+                "Welcome to Sports Facility Booking"
+              </h1>
+              <p className="text-xs md:text-2xl lg:text-3xl text-gray-200">
+                Book your favorite sports facility with ease
+              </p>
+
+              <button className="btn btn-sm md:btn-md text-white bg-[#c500d4] hover:bg-transparent">
+                Book Now
+              </button>
+            </div>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <div className="hero relative" id="hero">
+            <img src={slide2} alt="Slide 2" />
+            <div className="hero-overlay bg-[#000000] bg-opacity-60"></div>
+            <div className="space-y-6 w-3/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
+              <h1 className="text-xl md:text-4xl lg:text-7xl font-bold uppercase">
+                "Exclusive Sports Facility Offers"
+              </h1>
+              <p className="text-xs md:text-2xl lg:text-3xl text-gray-200">
+                Play More, Pay Less
+              </p>
+
+              <button className="btn  btn-sm md:btn-md text-white bg-[#c500d4] hover:bg-transparent">
+                Explore Now
+              </button>
+            </div>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <div className="relative hero">
+            <img src={slide3} alt="Slide 3" />
+            <div className="hero-overlay bg-[#000000] bg-opacity-60"></div>
+            <div className="space-y-6 w-3/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
+              <h1 className="text-xl md:text-4xl lg:text-7xl font-bold uppercase">
+                "Book Your Weekend Matches Now"
+              </h1>
+              <p className="text-xs md:text-2xl lg:text-3xl text-gray-200">
+                Flat 50% Discount on Weekend Games
+              </p>
+              <button className="btn  btn-sm md:btn-md text-white bg-[#c500d4] hover:bg-transparent">
+                Book Now
+              </button>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </>
   );
 };
 
