@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import slide1 from "../../assets/hero/Hero1.jpg";
+import slide1 from "../../assets/hero/hero1.jpg";
 import slide2 from "../../assets/hero/hero2.jpg";
 import slide3 from "../../assets/hero/hero3.jpg";
 
@@ -12,23 +12,23 @@ const Hero = () => {
   return (
     <>
       <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
+         spaceBetween={30}
+         centeredSlides={true}
+         autoplay={{
+             delay: 4000,
+             disableOnInteraction: true,
+         }}
+         pagination={{
+             clickable: true,
+         }}
+         navigation={true}
+         modules={[Autoplay, Pagination, Navigation]}
+         className="mySwiper "
       >
         <SwiperSlide>
           <div className="hero relative container">
             <img src={slide1} alt="Slide 1" />
-            <div className="hero-overlay bg-[#000000] bg-opacity-60"></div>
+            <div className="hero-overlay bg-[#000000] bg-opacity-70"></div>
             <div className="space-y-6 w-3/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center py-10">
               <h1 className="text-xl md:text-4xl lg:text-7xl font-bold uppercase">
                 "Welcome to Sports Facility Booking"
@@ -47,7 +47,7 @@ const Hero = () => {
         <SwiperSlide>
           <div className="hero relative" id="hero">
             <img src={slide2} alt="Slide 2" />
-            <div className="hero-overlay bg-[#000000] bg-opacity-60"></div>
+            <div className="hero-overlay bg-[#000000] bg-opacity-70"></div>
             <div className="space-y-6 w-3/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
               <h1 className="text-xl md:text-4xl lg:text-7xl font-bold uppercase">
                 "Exclusive Sports Facility Offers"
@@ -66,7 +66,7 @@ const Hero = () => {
         <SwiperSlide>
           <div className="relative hero">
             <img src={slide3} alt="Slide 3" />
-            <div className="hero-overlay bg-[#000000] bg-opacity-60"></div>
+            <div className="hero-overlay bg-[#000000] bg-opacity-70"></div>
             <div className="space-y-6 w-3/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
               <h1 className="text-xl md:text-4xl lg:text-7xl font-bold uppercase">
                 "Book Your Weekend Matches Now"

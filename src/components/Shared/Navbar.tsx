@@ -76,7 +76,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {/* <SearchModal/> */}
-          <Link to="/proceed" className="relative mr-2 md:mr-10 p-2">
+          <Link to="/register" className="relative mr-2 md:mr-10 p-2">
             Sign up
           </Link>
         </div>
@@ -147,6 +147,21 @@ const link = (
         }}
       >
         Dashboard
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/contact"
+        style={({ isActive }) => {
+          return {
+            color: isActive ? "#ced6d0" : "",
+            borderBottom: isActive ? "2px solid #fff" : "black",
+            fontWeight: isActive ? "bold" : "",
+            background: isActive ? "none" : "",
+          };
+        }}
+      >
+        Contactm
       </NavLink>
     </li>
   </>
