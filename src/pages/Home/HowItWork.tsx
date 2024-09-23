@@ -1,73 +1,169 @@
-import { CheckCircle } from "lucide-react";
-
-
+import { useState } from "react";
+import profileIcon from "../../assets/HowItWork/personalization_10605183.png";
+import paymentIcon from "../../assets/HowItWork/cashless-payment_4108843.png";
+import searchIcon from "../../assets/HowItWork/search_10023522.png";
+import bookIcon from "../../assets/HowItWork/calendar_10761701.png";
+import workIcon from "../../assets/HowItWork/schedule_15756945.png";
+import searchJobIcon from "../../assets/HowItWork/job-seeker_8041053.png";
+import { Link } from "react-router-dom";
 
 const HowItWork = () => {
+  const [activeTab, setActiveTab] = useState("users");
   return (
-    <div className="container mx-auto py-10">
-         <div className='text-center my-5 mt-10 space-y-2'> 
-                <h3 className='text-4xl uppercase font-bold text-lime-700'>How It's Work</h3>
-                
-            </div>
+    <div className="bg-white py-12 px-6 md:px-20 text-center">
+      <h2 className="text-3xl md:text-4xl font-bold mb-6">How it works</h2>
 
-      <div className="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0 lg:space-x-12">
-        
-        {/* Step 1 */}
-        <div className="flex flex-col items-center">
-          <CheckCircle className="text-blue-500 text-4xl" />
-          <h2 className="text-lg font-bold">Onboarding</h2>
-          <p className="text-gray-500 text-center">
-            Connect your account to start syncing your data.
-          </p>
-        </div>
-
-        {/* Dotted Line */}
-        <div className="lg:w-1/3 w-full lg:block hidden">
-          <svg height="100" width="100%">
-            <line
-              x1="0"
-              y1="50"
-              x2="100%"
-              y2="50"
-              stroke="black"
-              strokeDasharray="5,5"
-            />
-          </svg>
-        </div>
-
-        {/* Step 2 */}
-        <div className="flex flex-col items-center">
-          <CheckCircle className="text-blue-500 text-4xl" />
-          <h2 className="text-lg font-bold">Synchronization</h2>
-          <p className="text-gray-500 text-center">
-            Sync your products and information.
-          </p>
-        </div>
-
-        {/* Dotted Line */}
-        <div className="lg:w-1/3 w-full lg:block hidden">
-          <svg height="100" width="100%">
-            <line
-              x1="0"
-              y1="50"
-              x2="100%"
-              y2="50"
-              stroke="black"
-              strokeDasharray="5,5"
-            />
-          </svg>
-        </div>
-
-        {/* Step 3 */}
-        <div className="flex flex-col items-center">
-          <CheckCircle className="text-blue-500 text-4xl" />
-          <h2 className="text-lg font-bold">Fulfillment</h2>
-          <p className="text-gray-500 text-center">
-            Complete your setup and begin using the service.
-          </p>
-        </div>
-
+      {/* Tabs for Employers and Freelancers */}
+      <div className="flex justify-center space-x-8 mb-8">
+        <button
+          className={`text-lg font-semibold ${
+            activeTab === "users"
+              ? "text-black border-b-4 border-orange-500"
+              : "text-gray-400"
+          }`}
+          onClick={() => setActiveTab("users")}
+        >
+          For Users
+        </button>
+        <button
+          className={`text-lg font-semibold ${
+            activeTab === "employers"
+              ? "text-black border-b-4 border-orange-500"
+              : "text-gray-400"
+          }`}
+          onClick={() => setActiveTab("employers")}
+        >
+          For Employers
+        </button>
       </div>
+
+      {/* Content for Freelancers */}
+      {activeTab === "users" && (
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          {/* Build Your Profile */}
+          <div className="flex flex-col items-center">
+            <div className="bg-blue-100 p-4 rounded-full mb-4">
+              <img src={profileIcon} alt="Build Profile Icon" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Build your profile</h3>
+            <p className="text-gray-500 text-sm mb-2">
+              Put your best foot forward by filling out your profile with good
+              experience, easy booking and uploading portfolio items.
+            </p>
+            <Link to="/register" className="text-blue-500">
+              Sign Up now &gt;
+            </Link>
+          </div>
+
+          {/* Search & Apply */}
+          <div className="flex flex-col items-center">
+            <div className="bg-orange-100 p-4 rounded-full mb-4">
+              <img src={searchIcon} alt="Search Icon" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Search & Facility</h3>
+            <p className="text-gray-500 text-sm mb-2">
+              Search through our list of posted facilities for a booking that
+              for your select play ground and time to requirements.
+            </p>
+            <Link to="/facility" className="text-blue-500">
+              See available Facilities &gt;
+            </Link>
+          </div>
+
+          {/* Start booking */}
+          <div className="flex flex-col items-center">
+            <div className="bg-green-100 p-4 rounded-full mb-4">
+              <img src={bookIcon} alt="Start Working Icon" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Confirm Booking</h3>
+            <p className="text-gray-500 text-sm mb-2">
+              If you’re a good fit for the Facility, you can book a specific
+              facility and check its availability and fil up booking form.
+            </p>
+            <a href="/facility" className="text-blue-500">
+              booking now &gt;
+            </a>
+          </div>
+
+          {/* Get Paid */}
+          <div className="flex flex-col items-center">
+            <div className="bg-purple-100 p-4 rounded-full mb-4">
+              <img src={paymentIcon} alt="Get Paid Icon" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Get paid</h3>
+            <p className="text-gray-500 text-sm mb-2">
+              If you confirm your booking, you will be pay our facilities price.
+            </p>
+            <a href="/dashboard" className="text-blue-500">
+              Learn more about the payments &gt;
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* Content for Employers (you can fill this in similarly) */}
+      {activeTab === "employers" && (
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          {/* Build Your Profile */}
+          <div className="flex flex-col items-center">
+            <div className="bg-blue-100 p-4 rounded-full mb-4">
+              <img src={profileIcon} alt="Build Profile Icon" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Build your profile</h3>
+            <p className="text-gray-500 text-sm mb-2">
+            Put your best foot forward by filling out your profile with past job experience, completing skill tests, and uploading portfolio items.
+            </p>
+            <Link to="/register" className="text-blue-500">
+              Sign Up now &gt;
+            </Link>
+          </div>
+
+          {/* Search & Apply */}
+          <div className="flex flex-col items-center">
+            <div className="bg-orange-100 p-4 rounded-full mb-4">
+              <img src={searchJobIcon} alt="Search Icon" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">
+              Search & apply for jobs
+            </h3>
+            <p className="text-gray-500 text-sm mb-2">
+              Search through our list of posted projects for a job that fits
+              your skills and compensation requirements.
+            </p>
+            <Link to="/dashbord" className="text-blue-500">
+              See available Facilities &gt;
+            </Link>
+          </div>
+
+          {/* Start working */}
+          <div className="flex flex-col items-center">
+            <div className="bg-green-100 p-4 rounded-full mb-4">
+              <img src={workIcon} alt="Start Working Icon" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Start working</h3>
+            <p className="text-gray-500 text-sm mb-2">
+              If you’re a good fit for the job, get hired on hourly rates or fixed price contracts.
+            </p>
+            <Link to="/dashboard" className="text-blue-500">
+              booking now &gt;
+            </Link>
+          </div>
+
+          {/* Get Paid */}
+          <div className="flex flex-col items-center">
+            <div className="bg-purple-100 p-4 rounded-full mb-4">
+              <img src={paymentIcon} alt="Get Paid Icon" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Get paid</h3>
+            <p className="text-gray-500 text-sm mb-2">
+              If you confirm your booking, you will be pay our facilities price.
+            </p>
+            <Link to="/dashboard" className="text-blue-500">
+              Learn more about the payments &gt;
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
