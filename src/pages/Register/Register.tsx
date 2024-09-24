@@ -9,7 +9,8 @@ import { toast } from "sonner";
 
 const Register = () => {
   const dispatch = useAppDispatch();
-  const [signUp, { isLoading }] = useSignUpMutation();
+  const [signUp, { isLoading, error }] = useSignUpMutation();
+  console.log({ error})
   const navigate = useNavigate();
   const {
     register,
@@ -18,19 +19,21 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async (data: any) => {
-    if (isLoading) {
-      toast.loading("Signing up...");
-    }
+
+     const toastId= toast.loading("Signing up...");
+   
 
     try {
       dispatch(setUser(data));
       const response = await signUp(data).unwrap();
-      console.log(response);
+      console.log(response.message);
 
-      toast.success("Sign-up successful!", { style: { color: 'green' }});
+      toast.success(response.message, {id: toastId,duration: 4000, style: { color: 'green' }});
       navigate("/");
     } catch (err: any) {
-      toast.error(`Error: ${err.message || "Sign-up failed"}`, { style: { color: 'red' }});
+      toast.error(`Error: ${err.data.message || "Sign-up failed"}`, { id: toastId, duration: 4000, style: { color: 'red' }});
+    console.log({err})
+     
     }
   };
 

@@ -9,8 +9,15 @@ import { baseApi } from "../../api/baseApi";
             method: "POST",
             body: userInfo
         })
+    }),
+    logIn : builder.mutation({
+        query:(userInfo)=>({
+            url: "auth/login",
+            method: "POST",
+            body: userInfo
+        })
     })
   })
 })
 
-export const {useSignUpMutation} = authApi
+export const {useSignUpMutation, useLogInMutation} = authApi
