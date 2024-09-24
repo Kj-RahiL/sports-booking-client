@@ -1,17 +1,37 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from "react-hook-form";
 import bgLogin from "../../assets/Newsletter/NewsLetter1.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../redux/hooks";
+import { setUser } from "../../redux/features/user/registerSlice";
+import { useSignUpMutation } from "../../redux/features/Auth/authApi";
+import { toast } from "sonner";
 
 const Register = () => {
+  const dispatch = useAppDispatch();
+  const [signUp, { isLoading }] = useSignUpMutation();
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    if (isLoading) {
+      toast.loading("Signing up...");
+    }
+
+    try {
+      dispatch(setUser(data));
+      const response = await signUp(data).unwrap();
+      console.log(response);
+
+      toast.success("Sign-up successful!", { style: { color: 'green' }});
+      navigate("/");
+    } catch (err: any) {
+      toast.error(`Error: ${err.message || "Sign-up failed"}`, { style: { color: 'red' }});
+    }
   };
 
   const boxStyle = {
@@ -27,7 +47,10 @@ const Register = () => {
         style={{ ...boxStyle, background: `url(${bgLogin})` }}
       >
         <div className=" flex-shrink-0 w-full max-w-md">
-          <form onSubmit={handleSubmit(onSubmit)} className="p-2 md:p-4 lg:p-8 space-y-2">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="p-2 md:p-4 lg:p-8 space-y-2"
+          >
             <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-white text-center">
               Register SP Booking
             </h1>
@@ -92,18 +115,18 @@ const Register = () => {
               </div>
               <div className="form-control md:w-1/2 md:ml-4">
                 <label className="label">
-                  <span className="label-text text-white">Role</span>
+                  <span className="label-text text-white">Address</span>
                 </label>
                 <input
                   type="text"
-                  {...register("role", { required: true })}
-                  name="role"
-                  placeholder="Input your role"
+                  {...register("address", { required: true })}
+                  name="address"
+                  placeholder="Input your address"
                   className="w-full p-2 border border-gray-300 rounded-md"
                 />
                 {errors.name && (
                   <p className="text-red-600" role="alert">
-                    Role is required
+                    address is required
                   </p>
                 )}
               </div>
@@ -133,26 +156,11 @@ const Register = () => {
                 <p className="text-red-600">Password less than 20 characters</p>
               )}
             </div>
-
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text text-white">Address</span>
-              </label>
-              <input
-                type="text"
-                {...register("address", { required: true })}
-                name="address"
-                placeholder="Input your address"
-                className="w-full p-2 border border-gray-300 rounded-md"
-              />
-              {errors.name && (
-                <p className="text-red-600" role="alert">
-                  address is required
-                </p>
-              )}
-            </div>
             <div className="form-control pt-4">
-              <button className="btn btn-outline text-[#F4AF00]  bg-opacity-70">
+              <button
+                className="btn btn-outline text-[#F4AF00]  bg-opacity-70"
+                disabled={isLoading}
+              >
                 SignUp
               </button>
             </div>

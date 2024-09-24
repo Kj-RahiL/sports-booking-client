@@ -8,6 +8,7 @@ import Contact from "../pages/Contact/Contact";
 import ErrorElement from "../pages/Error/ErrorElement";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Register/Login";
+import FacilityDetails from "../pages/Facility Listing/FacilityDetails";
 
 
 const router = createBrowserRouter([
@@ -33,18 +34,22 @@ const router = createBrowserRouter([
                 element: <Facility />,
               },
               {
+                path: "/facility/:id",
+                element: <FacilityDetails />,
+              },
+              {
                 path: "/contact",
                 element: <Contact />,
               },
         ]
     },
     {
-      path: 'register',
+      path: 'signUp',
       element: <Register/>,
       // errorElement: <ErrorElement/>,
     },
     {
-      path: '/login',
+      path: 'login',
       element: <Login/>,
       errorElement: <ErrorElement/>,
     }

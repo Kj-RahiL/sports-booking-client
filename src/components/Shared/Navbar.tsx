@@ -76,7 +76,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {/* <SearchModal/> */}
-          <Link to="/register" className="relative mr-2 md:mr-10 p-2">
+          <Link to="/signUp" className="relative mr-2 md:mr-10 p-2">
             Sign up
           </Link>
         </div>

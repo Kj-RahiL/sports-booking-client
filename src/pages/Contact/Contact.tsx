@@ -1,7 +1,13 @@
+import ContactInfo from "./ContactInfo";
+
 const Contact = () => {
   return (
     <div className="bg-gray-100 py-20">
+       <ContactInfo/>
+
+       <h2 className="text-center text-4xl py-10">Feel Free to Message Us</h2>
       <div className="flex justify-center items-start container mx-auto mt-10 ">
+       
         {/* Left Section */}
         <div className="w-1/2 pr-8">
           <iframe
@@ -58,6 +64,9 @@ const Contact = () => {
           </p>
         </div>
       </div>
+
+      {/* contact details */}
+     
     </div>
   );
 };

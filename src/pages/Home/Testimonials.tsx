@@ -63,7 +63,7 @@ const Testimonials = () => {
   return (
     <div className="max-w-full min-w-[350px]  mx-auto h-[400px] items-center overflow-hidden gap-5 lg:gap-10 px-8 md:px-16 lg:px-24">
       <div className="text-center my-5 mt-10 space-y-2">
-        <h3 className="text-4xl uppercase font-bold text-lime-700">
+        <h3 className="text-4xl uppercase font-bold text-orange-500">
           testimonials
         </h3>
         <p className="text-2xl font-bold">What Client s Say</p>

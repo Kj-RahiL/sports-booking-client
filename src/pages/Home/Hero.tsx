@@ -25,24 +25,25 @@ const Hero = () => {
          modules={[Autoplay, Pagination, Navigation]}
          className="mySwiper "
       >
-        <SwiperSlide>
-          <div className="hero relative container">
+       <SwiperSlide>
+          <div className="hero relative" id="hero">
             <img src={slide1} alt="Slide 1" />
             <div className="hero-overlay bg-[#000000] bg-opacity-70"></div>
-            <div className="space-y-6 w-3/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center py-10">
-              <h1 className="text-xl md:text-4xl lg:text-7xl font-bold uppercase">
+            <div className="space-y-6 w-3/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
+            <h1 className="text-xl md:text-4xl lg:text-7xl font-bold uppercase">
                 "Welcome to Sports Facility Booking"
               </h1>
               <p className="text-xs md:text-2xl lg:text-3xl text-gray-200">
                 Book your favorite sports facility with ease
               </p>
 
-              <button className="btn btn-sm md:btn-md text-white bg-[#c500d4] hover:bg-transparent">
-                Book Now
+              <button className="btn  btn-sm md:btn-md text-white bg-[#c500d4] hover:bg-transparent">
+                Explore Now
               </button>
             </div>
           </div>
         </SwiperSlide>
+
 
         <SwiperSlide>
           <div className="hero relative" id="hero">
