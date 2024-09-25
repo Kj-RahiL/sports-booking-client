@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useAppDispatch } from "../../redux/hooks";
+import { logOut } from "../../redux/features/Auth/authSlice";
 
 const Navbar = () => {
     const [isNavbarVisible, setNavbarVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const dispatch = useAppDispatch()
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
@@ -75,10 +78,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
+          <button onClick={()=>dispatch(logOut())} className="btn text-green-500">LogOut</button>
           {/* <SearchModal/> */}
           <Link to="/signUp" className="relative mr-2 md:mr-10 p-2">
             Sign up
           </Link>
+
         </div>
       </div>
     </div>

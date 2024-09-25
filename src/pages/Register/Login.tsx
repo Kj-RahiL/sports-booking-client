@@ -37,11 +37,9 @@ const Login = () => {
       dispatch(setLoginUser({user, token}))
       toast.success("Logged In Successful", { id: toastId, duration: 4000 });
 
-      if (user.role === "admin") {
-        navigate(`/admin/dashboard`);
-      } else {
-        navigate(`/user/dashboard`);
-      }
+ 
+        navigate(`/dashboard`);
+     
     } catch (error:any) {
       toast.error(error.data.message || 'login failed', { id: toastId, duration: 4000 , style: { color: 'red' }})
     }
