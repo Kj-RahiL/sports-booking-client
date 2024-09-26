@@ -1,10 +1,11 @@
 export type TFacility = {
-  _id: string
+  _id?: string | null |undefined
   name: string;
+  image: string;
   description: string;
   pricePerHour: number;
   location: string;
-  isDeleted: boolean;
+  isDeleted?: boolean;
 };
 
 export type TBooking = {

@@ -6,6 +6,7 @@ export type TUserLogin = {
     role: string;
     iat: number;
     exp: number;
+    email:string
 }
 type TAuthState = {
     user: null | TUserLogin;

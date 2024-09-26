@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useAppDispatch } from "../../redux/hooks";
-import { logOut } from "../../redux/features/Auth/authSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { logOut, useCurrentToken } from "../../redux/features/Auth/authSlice";
+import { verifyToken } from "../../utils/verifyToken";
 
 const Navbar = () => {
   const [isNavbarVisible, setNavbarVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const dispatch = useAppDispatch();
+  const token = useAppSelector(useCurrentToken);
+  let user;
+
+  if (token) {
+    user = verifyToken(token);
+  }
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
@@ -78,16 +85,18 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <button
-            onClick={() => dispatch(logOut())}
-            className="btn text-green-500"
-          >
-            LogOut
-          </button>
-          {/* <SearchModal/> */}
-          <Link to="/signUp" className="relative mr-2 md:mr-10 p-2">
-            Sign up
-          </Link>
+          {user ? (
+            <button
+              onClick={() => dispatch(logOut())}
+              className="btn text-green-500"
+            >
+              LogOut
+            </button>
+          ) : (
+            <Link to="/login" className="relative mr-2 md:mr-10 p-2">
+              Log In
+            </Link>
+          )}
         </div>
       </div>
     </div>

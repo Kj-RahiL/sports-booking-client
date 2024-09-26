@@ -10,7 +10,7 @@ import Login from "../pages/Register/Login";
 import FacilityDetails from "../pages/Facility Listing/FacilityDetails";
 import ProtectedRoute from "./ProtectedRoute";
 import MyBookings from "../pages/Dashboard/user/MyBookings";
-import FacilityManagement from "../pages/Dashboard/admin/FacilityManagement";
+import FacilityManagement from "../pages/Dashboard/admin/FacilityManagement/FacilityManagement";
 import ViewAllBookings from "../pages/Dashboard/admin/ViewAllBookings";
 import AddAdmin from "../pages/Dashboard/admin/AddAdmin";
 import DashboardLayout from "../Layout/DashboardLayout";
@@ -63,12 +63,20 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     errorElement: <ErrorElement />,
     children: [
       {
         path: "",
-        element: <PrivateRoute ><Dashboard/></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-bookings",
