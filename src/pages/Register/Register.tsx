@@ -4,13 +4,19 @@ import bgLogin from "../../assets/Newsletter/NewsLetter1.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { setUser } from "../../redux/features/user/registerSlice";
-import { useSignUpMutation } from "../../redux/features/Auth/authApi";
+import {
+  useLogInMutation,
+  useSignUpMutation,
+} from "../../redux/features/Auth/authApi";
 import { toast } from "sonner";
+import { verifyToken } from "../../utils/verifyToken";
+import { logOut, setLoginUser } from "../../redux/features/Auth/authSlice";
 
 const Register = () => {
   const dispatch = useAppDispatch();
   const [signUp, { isLoading, error }] = useSignUpMutation();
-  console.log({ error})
+  const [login] = useLogInMutation();
+  console.log({ error });
   const navigate = useNavigate();
   const {
     register,
@@ -19,21 +25,38 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async (data: any) => {
-
-     const toastId= toast.loading("Signing up...");
-   
+    const toastId = toast.loading("Signing up...");
 
     try {
-      dispatch(setUser(data));
+      dispatch(logOut());
       const response = await signUp(data).unwrap();
-      console.log(response.message);
+      console.log(response);
 
-      toast.success(response.message, {id: toastId,duration: 4000, style: { color: 'green' }});
+      toast.success(response.message, {
+        id: toastId,
+        duration: 4000,
+        style: { color: "green" },
+      });
       navigate("/");
+
+      // login
+      const userInfo = {
+        email: data.email,
+        password: data.password,
+      };
+      const res = await login(userInfo).unwrap();
+      const token = res.token.split(" ")[1];
+      const user = verifyToken(token);
+      dispatch(setUser(data));
+
+      dispatch(setLoginUser({ user, token }));
     } catch (err: any) {
-      toast.error(`Error: ${err.data.message || "Sign-up failed"}`, { id: toastId, duration: 4000, style: { color: 'red' }});
-    console.log({err})
-     
+      toast.error(`Error: ${err.data.message || "Sign-up failed"}`, {
+        id: toastId,
+        duration: 4000,
+        style: { color: "red" },
+      });
+      console.log({ err });
     }
   };
 

@@ -4,9 +4,9 @@ import { useAppDispatch } from "../../redux/hooks";
 import { logOut } from "../../redux/features/Auth/authSlice";
 
 const Navbar = () => {
-    const [isNavbarVisible, setNavbarVisible] = useState(true);
+  const [isNavbarVisible, setNavbarVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
@@ -21,18 +21,18 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
   return (
     <div
-      className={`navbar fixed z-10 bg-[#04190a] bg-opacity-35 text-white transition-transform duration-300 ${
+      className={`navbar fixed z-10 bg-[#001317] bg-opacity-35 text-white transition-transform duration-300 ${
         isNavbarVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="navbar fixed z-10 bg-[#04190a] bg-opacity-35 text-white mx-auto max-w-screen">
+      <div className="navbar fixed z-10 bg-[#001317] bg-opacity-35 text-white mx-auto max-w-screen">
         <div className="navbar-start">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content ">
@@ -60,14 +60,14 @@ const Navbar = () => {
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
-            <ul className="menu bg-[#04190a] text-white min-h-full w-48 p-4 glass">
+            <ul className="menu bg-[#001317] text-white min-h-full w-48 p-4 glass">
               {/* Sidebar content here */}
               {link}
             </ul>
           </div>
           <Link
             to="/"
-            className="text-[#083214] font-extrabold tracking-wider text-white-border text-base md:text-2xl logo-font flex justify-center items-center"
+            className="text-[#e4e8e9] font-extrabold tracking-wider text-white-border text-base md:text-2xl logo-font flex justify-center items-center"
           >
             SP_Booking
           </Link>
@@ -78,12 +78,16 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <button onClick={()=>dispatch(logOut())} className="btn text-green-500">LogOut</button>
+          <button
+            onClick={() => dispatch(logOut())}
+            className="btn text-green-500"
+          >
+            LogOut
+          </button>
           {/* <SearchModal/> */}
           <Link to="/signUp" className="relative mr-2 md:mr-10 p-2">
             Sign up
           </Link>
-
         </div>
       </div>
     </div>
@@ -100,7 +104,7 @@ const link = (
         style={({ isActive }) => {
           return {
             color: isActive ? "#ced6d0" : "",
-            borderBottom: isActive ? "2px solid #fff" : "black",
+            borderBottom: isActive ? "2px solid #fff" : "#001317",
             fontWeight: isActive ? "bold" : "",
             background: isActive ? "none" : "",
           };

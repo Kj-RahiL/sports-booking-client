@@ -6,12 +6,11 @@ import bgLogin from "../../assets/Newsletter/NewsLetter1.jpg";
 import { useAppDispatch } from "../../redux/hooks";
 import { useLogInMutation } from "../../redux/features/Auth/authApi";
 import { toast } from "sonner";
-import { jwtDecode, JwtPayload } from "jwt-decode";
-import { setLoginUser } from "../../redux/features/Auth/authSlice";
 
-interface DecodedToken extends JwtPayload {
-    role: string;
-  }
+import { setLoginUser } from "../../redux/features/Auth/authSlice";
+import { verifyToken } from "../../utils/verifyToken";
+
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,7 +30,7 @@ const Login = () => {
      
       const res = await login(userInfo).unwrap();
       const token = res.token.split(' ')[1]
-      const user = jwtDecode<DecodedToken>(token)
+      const user = verifyToken(token)
       console.log(user)
 
       dispatch(setLoginUser({user, token}))

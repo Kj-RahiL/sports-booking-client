@@ -11,14 +11,14 @@ const HowItWork = () => {
   const [activeTab, setActiveTab] = useState("users");
   return (
     <div className="bg-white py-12 px-6 md:px-20 text-center">
-      <h2 className="text-3xl md:text-4xl font-bold mb-6">How it works</h2>
+      <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase">How It Works</h2>
 
       {/* Tabs for Employers and Freelancers */}
       <div className="flex justify-center space-x-8 mb-8">
         <button
           className={`text-lg font-semibold ${
             activeTab === "users"
-              ? "text-black border-b-4 border-orange-500"
+              ? "text-black border-b-4 border-[#245ca9]"
               : "text-gray-400"
           }`}
           onClick={() => setActiveTab("users")}
@@ -28,7 +28,7 @@ const HowItWork = () => {
         <button
           className={`text-lg font-semibold ${
             activeTab === "employers"
-              ? "text-black border-b-4 border-orange-500"
+              ? "text-black border-b-4 border-[#245ca9]"
               : "text-gray-400"
           }`}
           onClick={() => setActiveTab("employers")}
@@ -41,7 +41,7 @@ const HowItWork = () => {
       {activeTab === "users" && (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Build Your Profile */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col ">
             <div className="bg-blue-100 p-4 rounded-full mb-4">
               <img src={profileIcon} alt="Build Profile Icon" />
             </div>
@@ -50,13 +50,13 @@ const HowItWork = () => {
               Put your best foot forward by filling out your profile with good
               experience, easy booking and uploading portfolio items.
             </p>
-            <Link to="/register" className="text-blue-500">
+            <Link to="/register" className="text-[#245ca9] font-medium">
               Sign Up now &gt;
             </Link>
           </div>
 
           {/* Search & Apply */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col ">
             <div className="bg-orange-100 p-4 rounded-full mb-4">
               <img src={searchIcon} alt="Search Icon" />
             </div>
@@ -65,13 +65,13 @@ const HowItWork = () => {
               Search through our list of posted facilities for a booking that
               for your select play ground and time to requirements.
             </p>
-            <Link to="/facility" className="text-blue-500">
+            <Link to="/facility" className="text-[#245ca9] font-medium">
               See available Facilities &gt;
             </Link>
           </div>
 
           {/* Start booking */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col card">
             <div className="bg-green-100 p-4 rounded-full mb-4">
               <img src={bookIcon} alt="Start Working Icon" />
             </div>
@@ -80,13 +80,13 @@ const HowItWork = () => {
               If you’re a good fit for the Facility, you can book a specific
               facility and check its availability and fil up booking form.
             </p>
-            <a href="/facility" className="text-blue-500">
+            <Link to="/facility" className="text-[#245ca9] font-medium">
               booking now &gt;
-            </a>
+            </Link>
           </div>
 
           {/* Get Paid */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col ">
             <div className="bg-purple-100 p-4 rounded-full mb-4">
               <img src={paymentIcon} alt="Get Paid Icon" />
             </div>
@@ -94,9 +94,9 @@ const HowItWork = () => {
             <p className="text-gray-500 text-sm mb-2">
               If you confirm your booking, you will be pay our facilities price.
             </p>
-            <a href="/dashboard" className="text-blue-500">
-              Learn more about the payments &gt;
-            </a>
+            <Link to="/dashboard" className="text-[#245ca9] font-medium">
+              Learn more.. &gt;
+            </Link>
           </div>
         </div>
       )}
@@ -113,7 +113,7 @@ const HowItWork = () => {
             <p className="text-gray-500 text-sm mb-2">
             Put your best foot forward by filling out your profile with past job experience, completing skill tests, and uploading portfolio items.
             </p>
-            <Link to="/register" className="text-blue-500">
+            <Link to="/register" className="text-[#245ca9]">
               Sign Up now &gt;
             </Link>
           </div>
@@ -130,7 +130,7 @@ const HowItWork = () => {
               Search through our list of posted projects for a job that fits
               your skills and compensation requirements.
             </p>
-            <Link to="/dashbord" className="text-blue-500">
+            <Link to="/dashbord" className="text-[#245ca9]">
               See available Facilities &gt;
             </Link>
           </div>
@@ -144,7 +144,7 @@ const HowItWork = () => {
             <p className="text-gray-500 text-sm mb-2">
               If you’re a good fit for the job, get hired on hourly rates or fixed price contracts.
             </p>
-            <Link to="/dashboard" className="text-blue-500">
+            <Link to="/dashboard" className="text-[#245ca9]">
               booking now &gt;
             </Link>
           </div>
@@ -158,7 +158,7 @@ const HowItWork = () => {
             <p className="text-gray-500 text-sm mb-2">
               If you confirm your booking, you will be pay our facilities price.
             </p>
-            <Link to="/dashboard" className="text-blue-500">
+            <Link to="/dashboard" className="text-[#245ca9]">
               Learn more about the payments &gt;
             </Link>
           </div>

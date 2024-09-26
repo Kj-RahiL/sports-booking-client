@@ -61,9 +61,9 @@ const Testimonials = () => {
 
   const isSmallScreen = window.innerWidth <= 768;
   return (
-    <div className="max-w-full min-w-[350px]  mx-auto h-[400px] items-center overflow-hidden gap-5 lg:gap-10 px-8 md:px-16 lg:px-24">
+    <div className="max-w-full min-w-[350px] bg-[#e4e8e9]  mx-auto h-[400px] items-center overflow-hidden gap-5 lg:gap-10 px-8 md:px-16 lg:px-24">
       <div className="text-center my-5 mt-10 space-y-2">
-        <h3 className="text-4xl uppercase font-bold text-orange-500">
+        <h3 className="text-4xl uppercase font-bold text-head">
           testimonials
         </h3>
         <p className="text-2xl font-bold">What Client s Say</p>
@@ -97,8 +97,8 @@ const Testimonials = () => {
         >
           {/* sliders */}
           {reviews.map((each, idx) => (
-            <div key={idx} className="p-4 min-w-full md:min-w-[50%]">
-              <div className="h-full p-8 rounded shadow-[0px_4px_12px_rgba(0,0,0,0.1)]">
+            <div key={idx} className="p-4 min-w-full md:min-w-[50%] ">
+              <div className="h-full p-8 rounded shadow-[0px_4px_12px_rgba(0,1,0,0.1)] ">
                 <Quote
                   size={48}
                   color="#0f0f0f"

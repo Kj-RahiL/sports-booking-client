@@ -1,28 +1,21 @@
-
-import { MapPin, DollarSign } from 'lucide-react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { MapPin, DollarSign } from "lucide-react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useGetSingleFacilityQuery } from "../../redux/features/facility/facilityApi";
+import { TFacility } from "../../Types/Types";
 
 const FacilityDetails = () => {
   const { id } = useParams(); //
   const navigate = useNavigate();
 
+  const { data } = useGetSingleFacilityQuery(id);
 
-  const facility = {
-    id: 1,
-    name: 'Soccer Arena',
-    location: 'New York',
-    price: 100,
-    description: 'The Soccer Arena is a state-of-the-art facility offering top-notch amenities and a professional-grade turf field.',
-    images: [
-      '/path-to-image1.jpg',
-      '/path-to-image2.jpg',
-      '/path-to-image3.jpg',
-    ],
-  };
+  const facility = data?.data as TFacility
+
+  console.log(facility);
 
   // Navigate to booking page
   const handleBooking = () => {
-    navigate(`/book-facility/${facility.id}`);
+    navigate(`/book-facility/${facility._id}`);
   };
 
   return (
@@ -30,7 +23,7 @@ const FacilityDetails = () => {
       {/* Facility Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Image Gallery */}
-        <div>
+        {/* <div>
           <img 
             src={facility.images[0]} 
             alt={facility.name} 
@@ -46,20 +39,20 @@ const FacilityDetails = () => {
               />
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Facility Information */}
         <div>
-          <h1 className="text-3xl font-bold mb-4">{facility.name}</h1>
+          <h1 className="text-3xl font-bold mb-4">{facility?.name}</h1>
           <div className="flex items-center text-gray-600 mb-4">
-            <MapPin className="mr-2" /> {facility.location}
+            <MapPin className="mr-2" /> {facility?.location}
           </div>
           <div className="flex items-center text-gray-600 mb-4">
-            <DollarSign className="mr-2" /> ${facility.price} per hour
+            <DollarSign className="mr-2" /> ${facility?.pricePerHour} per hour
           </div>
-          <p className="text-gray-700 leading-relaxed mb-6">{facility.description}</p>
+          <p className="text-gray-700 leading-relaxed mb-6">{facility?.description}</p>
 
-          {/* Book Now Button */}
+       
           <button 
             onClick={handleBooking}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all"

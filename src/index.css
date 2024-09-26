@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text-head{
+    color: #003039;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+}
