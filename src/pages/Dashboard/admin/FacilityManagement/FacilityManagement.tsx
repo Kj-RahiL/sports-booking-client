@@ -51,11 +51,11 @@ const FacilityManagement = () => {
   if (error) return <div>Error loading data</div>;
 
   return (
-    <div className="bg-[#b0bdb1]">
-      <div className="container mx-auto py-20">
+    <div className=" ">
+      <div className="container mx-auto">
         <CreateFacility />
         <table className="w-full text-left">
-          <thead className="border-b text-white bg-[#4f6a53]">
+          <thead className="border-b text-white bg-[#001317]">
             <tr className="text-sm md:text-base lg:text-xl">
               <th className="py-4 px-2">Facility</th>
               <th className="py-4 hidden md:block">Location</th>
@@ -66,8 +66,8 @@ const FacilityManagement = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.data?.map((facility: TFacility) => (
-              <tr className="border-b font-medium" key={facility._id}>
+            {data?.data?.map((facility: TFacility, index: number) => (
+              <tr className={`border-b font-medium ${index % 2 === 1 ? 'bg-[#afbcbf]' : ''}`} key={facility._id}>
                 <td className="py-4 flex items-center space-x-2 md:space-x-6">
                   <img
                     src={facility?.image}

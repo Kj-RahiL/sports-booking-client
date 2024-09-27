@@ -18,7 +18,7 @@ const DashboardLayout = () => {
       <SideNav />
 
       {/* header content */}
-      <div className="flex-1 p-8 ">
+      <div className="flex-1 p-8 bg-[#e4e8e9]">
         {/* Top section with search bar and user info */}
         <div className="flex justify-between items-center mb-8">
           {/* Search bar */}

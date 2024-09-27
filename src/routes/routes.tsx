@@ -16,6 +16,7 @@ import AddAdmin from "../pages/Dashboard/admin/AddAdmin";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
+import BookFacility from "../pages/Booking/BookFacility";
 
 const router = createBrowserRouter([
   {
@@ -41,8 +42,8 @@ const router = createBrowserRouter([
         element: <FacilityDetails />,
       },
       {
-        path: "/bookings/:id",
-        element: <FacilityDetails />,
+        path: "/facility/:id/book-facility",
+        element: <BookFacility/>,
       },
       {
         path: "/contact",

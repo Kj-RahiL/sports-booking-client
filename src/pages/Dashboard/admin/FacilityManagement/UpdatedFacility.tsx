@@ -2,7 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useGetSingleFacilityQuery, useUpdateFacilityMutation } from "../../../../redux/features/facility/facilityApi";
+import {
+  useGetSingleFacilityQuery,
+  useUpdateFacilityMutation,
+} from "../../../../redux/features/facility/facilityApi";
 import { toast } from "sonner";
 import { Edit } from "lucide-react";
 import { TFacility } from "../../../../Types/Types";
@@ -24,69 +27,74 @@ const UpdatedFacility = ({ id }: { id: string }) => {
   } = useForm();
   console.log(errors);
 
-  const { data } = useGetSingleFacilityQuery(id)
+  const { data } = useGetSingleFacilityQuery(id);
 
-  const facility = data?.data as TFacility
+  const facility = data?.data as TFacility;
   console.log(facility);
   useEffect(() => {
     if (facility) {
-      setValue("name", facility.name);    
-      setValue("pricePerHour", facility.pricePerHour);    
-      setValue("location", facility.location);   
-      setValue("description", facility.description);    
+      setValue("name", facility.name);
+      setValue("pricePerHour", facility.pricePerHour);
+      setValue("location", facility.location);
+      setValue("description", facility.description);
     }
   }, [facility, setValue]);
 
   const onSubmit = async (data: any) => {
-    let imageUrl = facility?.image; 
-  
+    let imageUrl = facility?.image;
+
+    const toastId = toast.loading("update facility...");
     // Check if the user has selected a new image
     if (data.image && data.image[0]) {
       try {
         const formData = new FormData();
         formData.append("image", data.image[0]);
-  
+
         const response = await fetch(image_hosting_api, {
           method: "POST",
           body: formData,
         });
-  
+
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-  
+
         const resData = await response.json();
         console.log("Image uploaded successfully:", resData);
-        
+
         if (resData.success) {
           imageUrl = resData.data.display_url; // Set the new image URL
         }
       } catch (error) {
         console.error("Image upload error:", error);
-        toast.error("Image upload failed, using previous image.");
+        toast.error("Image upload failed, using previous image.", { id: toastId, duration: 3000 });
       }
     }
-  
+
     try {
       const updatedProduct = {
         facility: {
           name: data.name || facility?.name,
-          pricePerHour: data.pricePerHour ? parseFloat(data.pricePerHour) : facility?.pricePerHour,
-          location: data.location ? parseFloat(data.location) : facility?.location,
+          pricePerHour: data.pricePerHour
+            ? parseFloat(data.pricePerHour)
+            : facility?.pricePerHour,
+          location: data.location
+            ? parseFloat(data.location)
+            : facility?.location,
           image: imageUrl, // Use the new image if uploaded, otherwise keep the old one
           description: data.description || facility?.description,
         },
       };
-   
+
       await updateProduct({ id, token, ...updatedProduct }).unwrap();
-      toast.success("Facility updated successfully!");
-      setOpenModal(false)
+      toast.success("Facility updated successfully!", { id: toastId, duration: 3000 });
+      setOpenModal(false);
     } catch (error) {
       console.error("Facility update error:", error);
-      toast.error("Failed to update the facility.");
+      toast.error("Failed to update the facility.", { id: toastId, duration: 4000 });
     }
   };
-  
+
   return (
     <div>
       <button onClick={() => setOpenModal(true)}>
@@ -108,8 +116,8 @@ const UpdatedFacility = ({ id }: { id: string }) => {
               >
                 ✕
               </button>
-               {/* name and image Row */}
-               <div className="md:flex mt-8 mb-2 md:mb-8">
+              {/* name and image Row */}
+              <div className="md:flex mt-8 mb-2 md:mb-8">
                 <div className="form-control md:w-1/2">
                   <label className="label">
                     <span className="label-text text-xl font-medium text-[#63433f]">
@@ -148,7 +156,6 @@ const UpdatedFacility = ({ id }: { id: string }) => {
                 </div>
               </div>
 
-
               {/* pricePerHour and Location Row */}
               <div className="md:flex mb-2 md:mb-8">
                 <div className="form-control md:w-1/2">
@@ -160,14 +167,19 @@ const UpdatedFacility = ({ id }: { id: string }) => {
                   <label className="input-group">
                     <input
                       type="number"
-                      {...register("pricePerHour", { required: "pricePerHour is required" })}
+                      {...register("pricePerHour", {
+                        required: "pricePerHour is required",
+                      })}
                       placeholder="Product pricePerHour"
                       className="input input-bordered w-full"
                     />
                   </label>
-                  {errors.pricePerHour && typeof errors.pricePerHour.message === "string" && (
-                    <p className="text-red-500">{errors.pricePerHour.message}</p>
-                  )}
+                  {errors.pricePerHour &&
+                    typeof errors.pricePerHour.message === "string" && (
+                      <p className="text-red-500">
+                        {errors.pricePerHour.message}
+                      </p>
+                    )}
                 </div>
 
                 <div className="form-control md:w-1/2 md:ml-4">
@@ -177,9 +189,11 @@ const UpdatedFacility = ({ id }: { id: string }) => {
                     </span>
                   </label>
                   <label>
-                  <input
+                    <input
                       type="text"
-                      {...register("location", { required: "Location is required" })}
+                      {...register("location", {
+                        required: "Location is required",
+                      })}
                       className="input file-input-bordered w-full"
                     />
                   </label>
