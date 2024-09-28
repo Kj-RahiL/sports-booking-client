@@ -5,7 +5,7 @@ const Footer = () => {
     <>
       <footer className="footer bg-[#001317] glass text-white p-10">
         <aside>
-        <a className="text-[#003039] font-extrabold tracking-wider text-white-border text-4xl logo-font flex justify-center items-center">
+        <a className="text-[#003039] text-white-border font-extrabold tracking-wider text-4xl logo-font flex justify-center items-center">
           SP_Booking
         </a>
         <p className="logo-font text-lg text-[#002830]">Plant Supply Co.</p>
@@ -32,7 +32,7 @@ const Footer = () => {
         </nav>
       </footer>
       <aside className="bg-[#001317] py-5 text-center text-sm text-white dark:bg-gray-800">
-        <p>&copy; 2024 <span className="text-[#e4e8e9] logo-font text-white-border">SP_Booking</span>. All Rights Reserved.</p>
+        <p>&copy; 2024 <span className="logo-font ">SP_Booking</span>. All Rights Reserved.</p>
       </aside>
     </>
   );

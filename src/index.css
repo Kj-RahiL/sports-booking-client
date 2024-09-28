@@ -7,3 +7,29 @@
     text-transform: uppercase;
     font-size: 2.5rem;
 }
+
+.button {
+    padding: 0.5rem 1rem; 
+    border-radius: 0.375rem; 
+    background-color: #00798F; 
+    color: white; 
+  
+  }
+  
+  .button:hover {
+    background-color: #d3e8ec; 
+    color: #003e4a; 
+    border: 1px solid #003e4a; 
+  }
+
+  .logo-font {
+    font-family: "Merienda", cursive;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: oblique;
+  }
+
+  .text-white-border {
+    text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
+      -1px 1px 0 #fff;
+  }

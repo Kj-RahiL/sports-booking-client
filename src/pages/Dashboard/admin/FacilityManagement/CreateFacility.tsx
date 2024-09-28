@@ -65,7 +65,7 @@ const CreateFacility = () => {
     <div className="my-10">
       <button
         onClick={() => setOpenModal(true)}
-        className="btn text-white bg-green-600 my -10 text-xl hover:text-black "
+        className="btn text-white bg-[#003e4a] text-xl hover:border-[#003e4a] hover:text-[#003e4a] "
       >
         <Plus /> Create Facility
       </button>
@@ -77,7 +77,7 @@ const CreateFacility = () => {
         >
           <div
             onClick={(e_) => e_.stopPropagation()}
-            className="w-3/4 lg:w-3/5 my-10 mx-auto px-5 md:px-10 lg:px-20 py-5 bg-white/70 card overflow-y-auto max-h-[90vh] shadow-green-900 shadow-md"
+            className="w-3/4 lg:w-3/5 my-10 mx-auto px-5 md:px-10 lg:px-20 py-5 bg-white/80 card overflow-y-auto max-h-[90vh] shadow-[#002931] border-[#003e4a] shadow-lg"
           >
             <form onSubmit={handleSubmit(onSubmit)}>
               <button
@@ -91,8 +91,8 @@ const CreateFacility = () => {
               <div className="md:flex mt-8 mb-2 md:mb-8">
                 <div className="form-control md:w-1/2">
                   <label className="label">
-                    <span className="label-text text-xl font-medium text-[#63433f]">
-                      name
+                    <span className="label-text text-xl font-bold text-[#002931]">
+                      Name
                     </span>
                   </label>
                   <label className="input-group">
@@ -110,7 +110,7 @@ const CreateFacility = () => {
 
                 <div className="form-control md:w-1/2 md:ml-4">
                   <label className="label">
-                    <span className="label-text text-xl font-medium text-[#63433f]">
+                    <span className="label-text text-xl font-bold text-[#002931]">
                       Image
                     </span>
                   </label>
@@ -132,7 +132,7 @@ const CreateFacility = () => {
               <div className="md:flex mb-2 md:mb-8">
                 <div className="form-control md:w-1/2">
                   <label className="label">
-                    <span className="label-text text-xl font-medium text-[#63433f]">
+                    <span className="label-text text-xl font-bold text-[#002931]">
                       PricePerHour
                     </span>
                   </label>
@@ -151,7 +151,7 @@ const CreateFacility = () => {
 
                 <div className="form-control md:w-1/2 md:ml-4">
                   <label className="label">
-                    <span className="label-text text-xl font-medium text-[#63433f]">
+                    <span className="label-text text-xl font-bold text-[#002931]">
                       Location
                     </span>
                   </label>
@@ -159,7 +159,7 @@ const CreateFacility = () => {
                   <input
                       type="text"
                       {...register("location", { required: "Location is required" })}
-                      className="input file-input-bordered w-full"
+                      className="input input-bordered w-full"
                     />
                   
                   </label>
@@ -173,7 +173,7 @@ const CreateFacility = () => {
               {/* Description */}
               <div className="form-control mb-8">
                 <label className="label">
-                  <span className="label-text text-xl font-medium text-[#63433f]">
+                  <span className="label-text text-xl font-bold text-[#002931]">
                     Description
                   </span>
                 </label>
@@ -194,7 +194,7 @@ const CreateFacility = () => {
               </div>
 
               <input
-                className="btn btn-block normal-case hover:bg-green-900 bg-green-700 text-white"
+                className="btn btn-block normal-case text-white bg-[#003e4a] text-xl hover:border-[#003e4a] hover:text-[#003e4a] mb-4"
                 type="submit"
                 value="Create Facility"
               />

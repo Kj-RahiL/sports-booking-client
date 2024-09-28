@@ -4,7 +4,7 @@ const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     createAdmin: builder.mutation({
       query: (userData) => ({
-        url: "user",
+        url: "user/create-admin",
         method: "POST",
         body: userData,
       }),

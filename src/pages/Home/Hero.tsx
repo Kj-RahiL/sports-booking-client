@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import slide1 from "../../assets/hero/hero1.jpg";
 import slide2 from "../../assets/hero/hero2.jpg";
 import slide3 from "../../assets/hero/hero3.jpg";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -37,9 +38,9 @@ const Hero = () => {
                 Book your favorite sports facility with ease
               </p>
 
-              <button className="btn  btn-sm md:btn-md text-white bg-[#c500d4] hover:bg-transparent">
+              <Link to='/facility'><button className="button mt-5">
                 Explore Now
-              </button>
+              </button></Link>
             </div>
           </div>
         </SwiperSlide>
@@ -57,9 +58,9 @@ const Hero = () => {
                 Play More, Pay Less
               </p>
 
-              <button className="btn  btn-sm md:btn-md text-white bg-[#c500d4] hover:bg-transparent">
+              <Link to='/facility'><button className="button mt-5">
                 Explore Now
-              </button>
+              </button></Link>
             </div>
           </div>
         </SwiperSlide>
@@ -75,9 +76,9 @@ const Hero = () => {
               <p className="text-xs md:text-2xl lg:text-3xl text-gray-200">
                 Flat 50% Discount on Weekend Games
               </p>
-              <button className="btn  btn-sm md:btn-md text-white bg-[#c500d4] hover:bg-transparent">
-                Book Now
-              </button>
+              <Link to='/facility'><button className="button mt-5">
+                Explore Now
+              </button></Link>
             </div>
           </div>
         </SwiperSlide>

@@ -74,7 +74,7 @@ const Navbar = () => {
           </div>
           <Link
             to="/"
-            className="text-[#e4e8e9] font-extrabold tracking-wider text-white-border text-base md:text-2xl logo-font flex justify-center items-center"
+            className="text-[#001317] font-extrabold tracking-wider text-white-border text-base md:text-2xl  flex justify-center items-center"
           >
             SP_Booking
           </Link>

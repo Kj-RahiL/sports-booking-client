@@ -7,19 +7,22 @@ import { useGetSingleFacilityQuery } from "../../redux/features/facility/facilit
 import { TFacility } from "../../Types/Types";
 import { useCheckAvailabilityQuery } from "../../redux/features/booking/availabilityApi";
 import { toast } from "sonner";
+import {  useAppSelector } from "../../redux/hooks";
+import { useCreateBookingMutation } from "../../redux/features/booking/bookingApi";
+import { useCurrentToken } from "../../redux/features/Auth/authSlice";
 
 const BookFacility = () => {
+    const token = useAppSelector(useCurrentToken);
   const { id } = useParams(); // Facility ID
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const { data: facilityData, isLoading } = useGetSingleFacilityQuery(id);
-
   const { data: availabilityData, refetch } = useCheckAvailabilityQuery({
     date: selectedDate?.toISOString().split("T")[0],
     facility: facilityData?.data?._id,
   });
-
+const [createBooking] = useCreateBookingMutation()
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -39,16 +42,22 @@ const BookFacility = () => {
   const handleCheckAvailability = () => {
     if (selectedDate && facility?._id) {
       refetch();
-      toast.success("availability checked", { duration: 2000 });
     }
   };
 
-  const handleProceedToPay = () => {
+  const handleProceedToPay = async() => {
     if (startTime && endTime) {
-      // Navigate to payment process
-      console.log("Proceed to payment with", { startTime, endTime });
+      const bookingData= {
+        facility: facilityData?.data?._id,
+        date: selectedDate.toISOString().split("T")[0],
+        startTime,
+        endTime
+      }
+      const response = await createBooking({token, bookingData }).unwrap();
+      toast.success(response.message, {duration:3000})
+      handleCheckAvailability()
     } else {
-      alert("Please select a valid time slot.");
+      toast.warning("Please select a valid time slot.")
     }
   };
 
@@ -73,17 +82,14 @@ const BookFacility = () => {
             className="border px-3 py-2 w-4/5 md:w-full"
             placeholderText="Select a date"
           />
-          <button
-            onClick={handleCheckAvailability}
-            className=" bg-blue-600 text-white px-4 py-2 rounded text-sm md:text-base"
-          >
+          <button onClick={handleCheckAvailability} className=" button ">
             Check Availability
           </button>
         </div>
 
         {/* Available Slots */}
         <h3 className="text-lg font-semibold mb-4">Available Slots</h3>
-        {availabilityData?.data ? (
+        {availabilityData?.data.length > 0 ? (
           <div className="grid grid-cols-2 gap-4 mb-6">
             {availabilityData.data.map((slot: any) => (
               <button
@@ -102,7 +108,7 @@ const BookFacility = () => {
             ))}
           </div>
         ) : (
-          <p>No available slots for this date.</p>
+          <p className="py-8 text-xl font-medium text-sky-800">No available slots for this date.</p>
         )}
 
         {/* Time Slot Selection */}

@@ -8,6 +8,7 @@ import { selectCurrentUser } from "../../redux/features/Auth/authSlice";
 const FacilityDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate()
+const user = useAppSelector(selectCurrentUser)
 
   const { data, isLoading } = useGetSingleFacilityQuery(id);
 
@@ -27,12 +28,12 @@ const FacilityDetails = () => {
 
   return (
     <div className="container mx-auto py-20 px-6 md:px-12">
-      <div className="card lg:card-side bg-base-100 shadow-xl">
-        <figure>
+      <div className="card lg:card-side bg-base-100 shadow-xl ">
+        <figure className="">
           <img
             src={facility?.image}
             alt="Album"
-            className="w-full h-64 object-cover rounded-lg shadow-lg"
+            className="w-full lg:w-[670px] h-96 object-cover rounded-lg shadow-lg"
           />
         </figure>
         <div className="card-body">
@@ -41,7 +42,7 @@ const FacilityDetails = () => {
           <h2 className="card-title"><MapPin/>{facility?.location}</h2>
           <p>{facility?.description}</p>
           <div className="card-actions ">
-            <button onClick={handleBook} className="btn btn-primary">Book now</button>
+          <button onClick={handleBook} className={` ${user!.role === 'admin' ? 'btn btn-disabled' : 'button' }`}>Book now</button>
           </div>
         </div>
       </div>

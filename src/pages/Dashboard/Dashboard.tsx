@@ -9,7 +9,7 @@ const Dashboard = () => {
   return (
 
 
-      <div className="bg-purple-600 rounded-xl p-8 text-white shadow-lg flex items-center justify-between">
+      <div className="bg-[#003e4a] rounded-xl p-8 text-white shadow-lg flex items-center justify-between">
         {/* Text */}
         <div>
           <p className="text-sm mb-2">September 4, 2023</p>

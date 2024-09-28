@@ -9,11 +9,9 @@ export type TFacility = {
 };
 
 export type TBooking = {
+  _id?: string 
   date: string;
   startTime: string;
   endTime: string;
-  user: string;
   facility: string;
-  payableAmount: number;
-  isBooked: "confirmed" | "unconfirmed" | "canceled";
 };

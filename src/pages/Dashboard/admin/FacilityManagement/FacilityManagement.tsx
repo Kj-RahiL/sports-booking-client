@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { toast } from "sonner";
 import CreateFacility from "./CreateFacility";
 import { TFacility } from "../../../../Types/Types";
@@ -55,7 +56,7 @@ const FacilityManagement = () => {
       <div className="container mx-auto">
         <CreateFacility />
         <table className="w-full text-left">
-          <thead className="border-b text-white bg-[#001317]">
+          <thead className="border-b text-white bg-[#003e4a]">
             <tr className="text-sm md:text-base lg:text-xl">
               <th className="py-4 px-2">Facility</th>
               <th className="py-4 hidden md:block">Location</th>
@@ -87,11 +88,11 @@ const FacilityManagement = () => {
                 <td className="hidden md:table-cell">{facility.pricePerHour}</td>
                
                 <td className="text-xs md:text-base">
-                  <UpdatedFacility id={facility._id} />
+                  <UpdatedFacility id={facility._id!} />
                 </td>
                 <td className="text-xs md:text-base">
                   <button
-                    onClick={() => handleDelete(facility?._id, facility.name)}
+                    onClick={() => handleDelete(facility?._id as string, facility.name)}
                   >
                     <Delete className="text-red-500 text-2xl" />
                   </button>
