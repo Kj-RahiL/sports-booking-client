@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DollarSign, MapPin } from "lucide-react";
 import { useCurrentToken } from "../../../redux/features/Auth/authSlice";
 import { useGetUserByBookingQuery } from "../../../redux/features/booking/bookingApi";
@@ -9,7 +10,7 @@ const MyBookings = () => {
   console.log(data?.data);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-5 gap-8">
-      {data?.data?.map((booking) => (
+      {data?.data?.map((booking: any) => (
         <div key={booking._id} className="card shadow-md shadow-[#003e4a]">
           <figure className="px-10 pt-10 h-[220px]">
             <img

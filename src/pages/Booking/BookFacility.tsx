@@ -7,12 +7,12 @@ import { useGetSingleFacilityQuery } from "../../redux/features/facility/facilit
 import { TFacility } from "../../Types/Types";
 import { useCheckAvailabilityQuery } from "../../redux/features/booking/availabilityApi";
 import { toast } from "sonner";
-import {  useAppSelector } from "../../redux/hooks";
+import { useAppSelector } from "../../redux/hooks";
 import { useCreateBookingMutation } from "../../redux/features/booking/bookingApi";
 import { useCurrentToken } from "../../redux/features/Auth/authSlice";
 
 const BookFacility = () => {
-    const token = useAppSelector(useCurrentToken);
+  const token = useAppSelector(useCurrentToken);
   const { id } = useParams(); // Facility ID
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [startTime, setStartTime] = useState("");
@@ -22,7 +22,7 @@ const BookFacility = () => {
     date: selectedDate?.toISOString().split("T")[0],
     facility: facilityData?.data?._id,
   });
-const [createBooking] = useCreateBookingMutation()
+  const [createBooking] = useCreateBookingMutation();
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -45,19 +45,21 @@ const [createBooking] = useCreateBookingMutation()
     }
   };
 
-  const handleProceedToPay = async() => {
+  const handleProceedToPay = async () => {
     if (startTime && endTime) {
-      const bookingData= {
+      const bookingData = {
         facility: facilityData?.data?._id,
         date: selectedDate.toISOString().split("T")[0],
         startTime,
-        endTime
-      }
-      const response = await createBooking({token, bookingData }).unwrap();
-      toast.success(response.message, {duration:3000})
-      handleCheckAvailability()
+        endTime,
+      };
+      const response = await createBooking({ token, bookingData }).unwrap();
+      window.location.href = response.data.payment_url;
+      console.log(response);
+      toast.success(response.message, { duration: 3000 });
+      handleCheckAvailability();
     } else {
-      toast.warning("Please select a valid time slot.")
+      toast.warning("Please select a valid time slot.");
     }
   };
 
@@ -108,7 +110,9 @@ const [createBooking] = useCreateBookingMutation()
             ))}
           </div>
         ) : (
-          <p className="py-8 text-xl font-medium text-sky-800">No available slots for this date.</p>
+          <p className="py-8 text-xl font-medium text-sky-800">
+            No available slots for this date.
+          </p>
         )}
 
         {/* Time Slot Selection */}
