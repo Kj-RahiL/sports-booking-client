@@ -15,3 +15,7 @@ export type TBooking = {
   endTime: string;
   facility: string;
 };
+
+// export type TBookingManagement = {
+
+// }

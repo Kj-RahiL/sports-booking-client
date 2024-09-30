@@ -11,7 +11,7 @@ const AddAdmin = () => {
     register,
     formState: { errors },
     handleSubmit,
-    reset
+    reset,
   } = useForm();
 
   const onSubmit = async (data: any) => {
@@ -19,7 +19,7 @@ const AddAdmin = () => {
 
     try {
       const response = await createAdmin(data).unwrap();
-      reset()
+      reset();
       toast.success(response.message, {
         id: toastId,
         duration: 4000,
@@ -39,15 +39,17 @@ const AddAdmin = () => {
     boxShadow: "5px 5px 5px 5px rgba(0, 35, 41, 1)",
   };
   return (
-    <div
-      className="hero min-h-screen bg-base-200 bg-cover"  
-    >
+    <div className="hero min-h-screen bg-cover">
       <div
         className="hero-content flex-col lg:flex-row m-8 md:m-20 bg-[#003e4a]"
         style={{ ...boxStyle }}
       >
-        
         <div className=" flex-shrink-0 w-full max-w-md">
+          <div className="flex justify-center">
+            <p className="text-white text-4xl px-6 py-4 font-semibold border-b-2 rounded-b-md">
+              Add Admin{" "}
+            </p>
+          </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="p-2 md:p-4 lg:p-8 space-y-2"

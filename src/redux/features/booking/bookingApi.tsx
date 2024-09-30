@@ -22,9 +22,12 @@ const bookingApi = baseApi.injectEndpoints({
       },
     }),
     getAllBooking: builder.query({
-      query: () => ({
+      query: ({token}) => ({
         url: "bookings",
         method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
       }),
     }),
     getUserByBooking: builder.query({

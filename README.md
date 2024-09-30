@@ -1,50 +1,77 @@
-# React + TypeScript + Vite
+# Sports Facility Booking Client app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live Url: https://sp-booking-client-six.vercel.app/
 
-Currently, two official plugins are available:
+## Story
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project was inspired by a sports lover named Alex, who wanted to simplify the booking process for sports facilities. Through teamwork and the use of modern technologies to backend server like TypeScript, Express.js, and Mongoose and frontend using TypeScript, React, Redux, RTK-Query, Tailwind.css and needed npm package.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **User Authentication**: User sign-up, login, and role-based access control (Admin/User).
+- **Booking System**: Book sports facilities with real-time price calculation based on booking duration.
+- **Facility Management**: Admins can add, update, delete, and view sports facilities.
+- **Booking Management**: Users can create, view, and cancel bookings, while admins can manage all bookings.
+- **Availability Checker**: Check facility availability for specific time slots.
+- **Global Error Handling**: Robust error handling using middleware.
+- **Soft Deletion**: Facilities can be soft-deleted (not permanently removed).
+- **Middleware for Transactions**: Global middleware handles validation, transactions, and errors.
 
-- Configure the top-level `parserOptions` property like this:
+## Technologies Used
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Frontend**: TypeScript, React, Redux
+- **Image hosting**: ImageBB
+- **Authentication**: protected route by role based, login/signup using this route
+- **Error Handling**: Error page
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Installation
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Clone the repository:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   ```bash
+   git clone  https://github.com/Kj-RahiL/sports-booking-client
+
+    ```
+2. Navigate to the project directory:
+    ``` 
+    cd sports-facility-booking
+    ```
+3. Install the dependencies:
+    ``` 
+    npm install
+    ```
+4. Set up environment variables:
+    ```example
+    PORT= port number
+    DATABASE_URL=your database
+    BCRYPT_SALT_ROUNDS = 5
+    JWT_ACCESS_SECRET = secret code
+    JWT_ACCESS_EXPIRE_IN= time expire
+    JWT_REFRESH_SECRET = refresh secret code
+    JWT_REFRESH__EXPIRE_IN=time expire
+    ```
+5. Start the server:
+    ```
+    npm run start:dev
+    ```
+## API Endpoints
+**User Routes**
+    POST /api/auth/signup: Register a new user.
+    POST /api/auth/login: Login and receive an authentication token.
+**Facility Routes**
+    POST /api/facility: Create a new facility.
+    PUT /api/facility/:id: Update an existing facility.
+    DELETE /api/facility/:id: Soft delete a facility.
+    GET /api/facility: Get a list of all facilities.
+**Booking Routes**
+    GET /api/check-availability: Check facility availability for a specific date and time.
+    POST /api/bookings: Create a new booking.
+    GET /api/bookings: View all bookings (Admin only).
+    GET /api/bookings/user: View bookings of the logged-in user.
+    DELETE /api/bookings/:id: Cancel a specific booking.
+
+## License
+    This project is Assignment Project .
+
+Contact
+If you have any questions or feedback, feel free to reach out to me via rahiilarham@gmail.com

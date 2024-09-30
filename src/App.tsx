@@ -8,7 +8,7 @@ const App = () => {
   return (
      <>
       <Navbar />
-      <Outlet/>
+      <div className='min-h-screen'><Outlet/></div>
       <Footer/>
       <ScrollToTop/>
       </>

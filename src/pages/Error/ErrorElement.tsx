@@ -1,8 +1,8 @@
 
 import { Link } from "react-router-dom";
-import error from '../../../public/error.json'
 import Lottie from "lottie-react";
 import { ArrowLeftFromLine } from "lucide-react";
+import error from '../../../public/Error.json'
 
 const ErrorElement = () => {
     return (
