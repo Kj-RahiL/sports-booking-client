@@ -18,7 +18,7 @@ const HowItWork = () => {
         <button
           className={`text-lg font-semibold ${
             activeTab === "users"
-              ? "text-black border-b-4 border-[#245ca9]"
+              ? "text-black border-b-4 border-[#00798F]"
               : "text-gray-400"
           }`}
           onClick={() => setActiveTab("users")}
@@ -28,7 +28,7 @@ const HowItWork = () => {
         <button
           className={`text-lg font-semibold ${
             activeTab === "employers"
-              ? "text-black border-b-4 border-[#245ca9]"
+              ? "text-black border-b-4 border-[#00798F]"
               : "text-gray-400"
           }`}
           onClick={() => setActiveTab("employers")}
@@ -50,7 +50,7 @@ const HowItWork = () => {
               Put your best foot forward by filling out your profile with good
               experience, easy booking and uploading portfolio items.
             </p>
-            <Link to="/register" className="text-[#245ca9] font-medium">
+            <Link to="/register" className="text-[#00798F] font-medium">
               Sign Up now &gt;
             </Link>
           </div>
@@ -65,7 +65,7 @@ const HowItWork = () => {
               Search through our list of posted facilities for a booking that
               for your select play ground and time to requirements.
             </p>
-            <Link to="/facility" className="text-[#245ca9] font-medium">
+            <Link to="/facility" className="text-[#00798F] font-medium">
               See available Facilities &gt;
             </Link>
           </div>
@@ -80,7 +80,7 @@ const HowItWork = () => {
               If you’re a good fit for the Facility, you can book a specific
               facility and check its availability and fil up booking form.
             </p>
-            <Link to="/facility" className="text-[#245ca9] font-medium">
+            <Link to="/facility" className="text-[#00798F] font-medium">
               booking now &gt;
             </Link>
           </div>
@@ -94,7 +94,7 @@ const HowItWork = () => {
             <p className="text-gray-500 text-sm mb-2">
               If you confirm your booking, you will be pay our facilities price.
             </p>
-            <Link to="/dashboard" className="text-[#245ca9] font-medium">
+            <Link to="/dashboard" className="text-[#00798F] font-medium">
               Learn more.. &gt;
             </Link>
           </div>
@@ -113,7 +113,7 @@ const HowItWork = () => {
             <p className="text-gray-500 text-sm mb-2">
             Put your best foot forward by filling out your profile with past job experience, completing skill tests, and uploading portfolio items.
             </p>
-            <Link to="/register" className="text-[#245ca9]">
+            <Link to="/register" className="text-[#00798F]">
               Sign Up now &gt;
             </Link>
           </div>
@@ -130,7 +130,7 @@ const HowItWork = () => {
               Search through our list of posted projects for a job that fits
               your skills and compensation requirements.
             </p>
-            <Link to="/dashbord" className="text-[#245ca9]">
+            <Link to="/dashbord" className="text-[#00798F]">
               See available Facilities &gt;
             </Link>
           </div>
@@ -144,7 +144,7 @@ const HowItWork = () => {
             <p className="text-gray-500 text-sm mb-2">
               If you’re a good fit for the job, get hired on hourly rates or fixed price contracts.
             </p>
-            <Link to="/dashboard" className="text-[#245ca9]">
+            <Link to="/dashboard" className="text-[#00798F]">
               booking now &gt;
             </Link>
           </div>
@@ -158,7 +158,7 @@ const HowItWork = () => {
             <p className="text-gray-500 text-sm mb-2">
               If you confirm your booking, you will be pay our facilities price.
             </p>
-            <Link to="/dashboard" className="text-[#245ca9]">
+            <Link to="/dashboard" className="text-[#00798F]">
               Learn more about the payments &gt;
             </Link>
           </div>

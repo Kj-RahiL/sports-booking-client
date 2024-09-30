@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/facility/:id/book-facility",
-        element: <BookFacility/>,
+        element: <PrivateRoute><BookFacility/></PrivateRoute>,
       },
       {
         path: "/contact",

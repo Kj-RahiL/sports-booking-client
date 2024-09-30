@@ -6,6 +6,7 @@ import {
   Quote,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import image from '../../assets/blog-3.jpg'
 
 const Testimonials = () => {
   const reviews = [
@@ -18,22 +19,22 @@ const Testimonials = () => {
     },
     {
       id: 2,
-      name: "Jhone Doe",
-      title: "Easy Booking",
+      name: "Jene Hunt",
+      title: "Fun with friends",
       details: "Book your sports facilities with just a few clicks!",
       rating: 4,
     },
     {
       id: 3,
-      name: "Jhone Doe",
-      title: "Easy Booking",
+      name: "Rahi Doe",
+      title: "Awesome Playgrounds",
       details: "Book your sports facilities with just a few clicks!",
       rating: 5,
     },
     {
       id: 4,
-      name: "Jhone Doe",
-      title: "Easy Booking",
+      name: "Jene Fuu",
+      title: "Exciting Facility",
       details: "Book your sports facilities with just a few clicks!",
       rating: 3.8,
     },
@@ -61,16 +62,16 @@ const Testimonials = () => {
 
   const isSmallScreen = window.innerWidth <= 768;
   return (
-    <div className="max-w-full min-w-[350px] bg-[#e4e8e9]  mx-auto h-[400px] items-center overflow-hidden gap-5 lg:gap-10 px-8 md:px-16 lg:px-24">
+    <div className="max-w-full bg-[#f8ffff]  mx-auto h-[400px] items-center overflow-hidden gap-5 lg:gap-10 px-8 md:px-16 lg:px-24">
       <div className="text-center my-5 mt-10 space-y-2">
-        <h3 className="text-4xl uppercase font-bold text-head">
+        <h3 className="text-2xl md:text-4xl uppercase font-bold text-head">
           testimonials
         </h3>
         <p className="text-2xl font-bold">What Client s Say</p>
       </div>
 
       <div className="relative overflow-hidden">
-        <div className="absolute w-full h-full flex items-center justify-between z-50 px-5">
+        <div className="absolute w-full h-full flex items-center justify-between z-50 px-2 md:px-5">
           {/* arrow left */}
           <button
             onClick={prevSlider}
@@ -98,7 +99,7 @@ const Testimonials = () => {
           {/* sliders */}
           {reviews.map((each, idx) => (
             <div key={idx} className="p-4 min-w-full md:min-w-[50%] ">
-              <div className="h-full p-8 rounded shadow-[0px_4px_12px_rgba(0,1,0,0.1)] ">
+              <div className="h-full p-4 md:p-8 rounded shadow-[#00798F] shadow-md ">
                 <Quote
                   size={48}
                   color="#0f0f0f"
@@ -111,7 +112,7 @@ const Testimonials = () => {
                 <a className="inline-flex items-center">
                   <img
                     className="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center"
-                    src={`https://source.unsplash.com/200x200/?${each.keyWord}`}
+                    src={image}
                     alt="carousel navigate ui"
                   />
                   <span className="flex-grow flex flex-col pl-4">

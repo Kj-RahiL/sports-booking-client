@@ -13,7 +13,7 @@ import { NavLink } from "react-router-dom";
 const SideNav = () => {
   const user = useAppSelector((state) => state.auth.user);
   return (
-    <div className="w-1/5 bg-[#003e4a] p-5 pt-10 ">
+    <div className=" ">
       <div className="space-y-4">
         {/* Icon and label */}
         {user?.role === "user" && (
@@ -59,7 +59,7 @@ const SideNav = () => {
                   }`
                 }
               >
-                <GraduationCap className="h-8 w-8 text-white" />
+                <GraduationCap className="h-7 w-7 text-white" />
                 <span className="text-lg font-semibold">Dashboard</span>
               </NavLink>
             </li>
@@ -89,7 +89,7 @@ const SideNav = () => {
                   }`
                 }
               >
-                <CreditCard className="h-8 w-8 text-white" />
+                <CreditCard className="h-7 w-7 text-white" />
                 <span className="text-lg font-semibold">View All Bookings</span>
               </NavLink>
             </li>{" "}

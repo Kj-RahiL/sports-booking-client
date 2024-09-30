@@ -8,12 +8,11 @@ const Facility = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [priceSort, setPriceSort] = useState('default');
 
-  const { data, error, isLoading } = useGetAllFacilityQuery(" "); // Get the facilities data
+  const { data, isLoading } = useGetAllFacilityQuery(" "); // Get the facilities data
   const facilities = data?.data;
-  console.log(facilities);
+
   // Handle loading state
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error occurred: {error.message}</div>;
 
   // If no facilities are returned
   if (!facilities || facilities.length === 0)
@@ -30,9 +29,13 @@ const Facility = () => {
 
   // Sort facilities based on price
   if (priceSort === "lowToHigh") {
-    filteredFacilities = filteredFacilities.sort((a, b) => a.price - b.price);
+    filteredFacilities = filteredFacilities.sort(
+      (a: TFacility, b: TFacility) => a.pricePerHour - b.pricePerHour
+    );
   } else if (priceSort === "highToLow") {
-    filteredFacilities = filteredFacilities.sort((a, b) => b.price - a.price);
+    filteredFacilities = filteredFacilities.sort(
+      (a: TFacility, b: TFacility) => b.pricePerHour - a.pricePerHour
+    );
   }
   return (
     <div className="py-20 px-6 md:px-12">

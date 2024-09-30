@@ -60,7 +60,7 @@ const FacilityManagement = () => {
             <tr className="text-sm md:text-base lg:text-xl">
               <th className="py-4 px-2">Facility</th>
               <th className="py-4 hidden md:block">Location</th>
-              <th className="py-4">PricePerHour</th>
+              <th className="py-4 ">Price</th>
               <th className="py-4">Update</th>
               <th className="py-4">Delete</th>
               <th></th>
@@ -85,7 +85,7 @@ const FacilityManagement = () => {
                   </div>
                 </td>
                 <td className="hidden md:table-cell">{facility.location}</td>
-                <td className="hidden md:table-cell">{facility.pricePerHour}</td>
+                <td className="text-xs md:text-base">{facility.pricePerHour}</td>
                
                 <td className="text-xs md:text-base">
                   <UpdatedFacility id={facility._id!} />

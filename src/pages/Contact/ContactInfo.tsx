@@ -2,11 +2,11 @@ import { HouseIcon, Mailbox, Phone } from 'lucide-react';
 
 const ContactInfo = () => {
     return (
-        <div>
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Contact Us</h2>
+        <div className='py-10'>
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-[#003039]">Contact Us</h2>
         <div className="bg-white">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 mx-20 justify-center py-20  gap-10 text-center">
-            <div className="card  shadow-xl ">
+            <div className="card  shadow-md shadow-[#003039] ">
               <div className="card-body ">
                 <div className="flex items-center justify-center h-20 w-full">
                   <HouseIcon size={42}></HouseIcon>
@@ -17,7 +17,7 @@ const ContactInfo = () => {
               </div>
             </div>
 
-            <div className="card shadow-xl">
+            <div className="card shadow-md shadow-[#003039]">
               <div className="card-body">
                 <div className="flex items-center justify-center h-20 w-full">
                   <Phone size={42}></Phone>
@@ -27,7 +27,7 @@ const ContactInfo = () => {
               </div>
             </div>
 
-            <div className="card  shadow-xl ">
+            <div className="card  shadow-md shadow-[#003039] ">
               <div className="card-body">
                 <div className="flex items-center justify-center h-20 w-full">
                   <Mailbox size={42}></Mailbox>

@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { logOut, useCurrentToken } from "../../redux/features/Auth/authSlice";
 import { verifyToken } from "../../utils/verifyToken";
+import { LogIn, LogOut } from "lucide-react";
+import { toast } from "sonner";
 
 const Navbar = () => {
   const [isNavbarVisible, setNavbarVisible] = useState(true);
@@ -35,11 +37,11 @@ const Navbar = () => {
   }, [lastScrollY]);
   return (
     <div
-      className={`navbar fixed z-10 bg-[#001317] bg-opacity-35 text-white transition-transform duration-300 ${
+      className={`navbar fixed z-10 bg-[#001317]  text-white transition-transform duration-300  mx-auto max-w-screen ${
         isNavbarVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="navbar fixed z-10 bg-[#001317] bg-opacity-35 text-white mx-auto max-w-screen">
+      <div className="navbar fixed text-white">
         <div className="navbar-start">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content ">
@@ -87,14 +89,18 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <button
-              onClick={() => dispatch(logOut())}
-              className="btn text-green-500"
+              onClick={() => (
+                dispatch(logOut()),
+                toast.success('LogOut Successful', {duration:3000})
+              )}
+              className="mr-2 md:mr-10 py-2 px-3 border-2 rounded-md flex gap-2 bg-[#364143] hover:bg-transparent"
             >
+              <LogOut/>
               LogOut
             </button>
           ) : (
-            <Link to="/login" className="relative mr-2 md:mr-10 p-2">
-              Log In
+            <Link to="/login" className="text-sm md:text-base px-2 py-1 border mr-2 md:mr-10 md:py-2 md:px-3 md:cborder-2 rounded-md flex gap-2 bg-[#364143] hover:bg-transparent">
+            <LogIn/> Log In
             </Link>
           )}
         </div>
@@ -179,7 +185,7 @@ const link = (
           };
         }}
       >
-        Contactm
+        Contact
       </NavLink>
     </li>
   </>

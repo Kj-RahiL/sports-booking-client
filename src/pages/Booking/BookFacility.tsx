@@ -79,7 +79,7 @@ const BookFacility = () => {
         <div className="flex items-center justify-between mb-6 w-full">
           <DatePicker
             selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
+            onChange={(date) => setSelectedDate(date!)}
             dateFormat="yyyy/MM/dd"
             className="border px-3 py-2 w-4/5 md:w-full"
             placeholderText="Select a date"

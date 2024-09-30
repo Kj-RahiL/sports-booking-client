@@ -42,7 +42,7 @@ const user = useAppSelector(selectCurrentUser)
           <h2 className="card-title"><MapPin/>{facility?.location}</h2>
           <p>{facility?.description}</p>
           <div className="card-actions ">
-          <button onClick={handleBook} className={` ${user!.role === 'admin' ? 'btn btn-disabled' : 'button' }`}>Book now</button>
+          <button onClick={handleBook} className={` button ${user?.role === 'admin' ? 'btn btn-disabled' : 'button' }`}>Book now</button>
           </div>
         </div>
       </div>
